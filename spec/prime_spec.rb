@@ -1,5 +1,26 @@
 require_relative './spec_helper'
 require_relative '../prime.rb'
+=begin
+below is additional benchmarking code
+=end
+require 'benchmark'
+
+array = Array(1..10_000_000)
+
+Benchmark.bmbm(7) do |bm|
+  bm.report('reverse') do
+    array.dup.reverse
+  end
+
+  bm.report('reverse!') do
+    array.dup.reverse!
+  end
+end
+
+
+=begin
+above is additional benchmarking code
+=end
 
 describe "prime?" do
   it 'returns true for prime numbers' do
